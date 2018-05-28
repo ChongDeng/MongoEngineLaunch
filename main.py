@@ -1,6 +1,6 @@
 from mongoengine import *
 
-from models import User, TextPost, LinkPost
+from models import User, TextPost, LinkPost, Post
 
 connect('Scuter')
 
@@ -27,11 +27,17 @@ def create_post_by_user():
     post2 = LinkPost(title='MongoEngine Documentation', author=john)
     post2.link_url = 'http://docs.mongoengine.com/'
     post2.tags = ['mongoengine']
-    post2.save() 
+    post2.save()
+
+def access_data():
+    for post in Post.objects:
+        print("post title: ", post.title)
 
 def main():
     # create_user_doc()
     # create_user_doc2()
-    create_post_by_user()
+    # create_post_by_user()
+    access_data()
+
 if __name__ == '__main__':
     main()
