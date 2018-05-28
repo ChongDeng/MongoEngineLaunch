@@ -33,11 +33,28 @@ def access_data():
     for post in Post.objects:
         print("post title: ", post.title)
 
+def access_data2():
+    for post in TextPost.objects:
+        print("content: ", post.content)
+
+    print("=======================")
+
+    for post in Post.objects:
+        print(post.title)
+        print('*' * len(post.title))
+
+        if isinstance(post, TextPost):
+            print(post.content)
+
+        if isinstance(post, LinkPost):
+            print('Link: {}'.format(post.link_url))
+
 def main():
     # create_user_doc()
     # create_user_doc2()
     # create_post_by_user()
-    access_data()
+    # access_data()
+    access_data2()
 
 if __name__ == '__main__':
     main()
