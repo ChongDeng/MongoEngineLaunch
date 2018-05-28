@@ -49,12 +49,31 @@ def access_data2():
         if isinstance(post, LinkPost):
             print('Link: {}'.format(post.link_url))
 
+def access_data3():
+    for user in User.objects:
+        print("user: ", user.email)
+
+        print('*' * len(user.email))
+
+    print('=' * 40)
+
+    for user in User.objects(email='ross@example.com'):
+        print("name: ", user.first_name)
+
+
+def update_data():
+    for post in LinkPost.objects(title='MongoEngine Documentation'):
+        post.title = 'MongoEngine Documentation new'
+        post.save()
+
 def main():
     # create_user_doc()
     # create_user_doc2()
     # create_post_by_user()
     # access_data()
-    access_data2()
+    # access_data2()
+    # access_data3()
+    update_data()
 
 if __name__ == '__main__':
     main()
